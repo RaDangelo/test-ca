@@ -26,14 +26,14 @@ Plot.init = function init() {
 
             Plot.post({
                 'task': 'listen',
-                'events': ['hover', 'touchstart']
+                'events': ['click', 'touch']
             });
         }
-        else if(message.type === 'hover') {
-            Plot.onHover(message);
-        }
-        else if(message.type === 'touchstart') {
+        else if(message.type === 'touch') {
             Plot.onTouchStart(message);
+        }
+        else if(message.type === 'click') {
+            Plot.onClick(message);
         }
     }
 
@@ -71,7 +71,7 @@ var artistToUrl = {
 
 var blankImg = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 
-Plot.onHover = function(message) {
+Plot.onClick = function(message) {
     console.log('test');
     var artist = message.points[0].x
         .toLowerCase()
@@ -83,7 +83,7 @@ Plot.onHover = function(message) {
 
     Plot.hoverImg.src = imgSrc;
 };
-Plot.onTouchStart = function(message) {
+Plot.onTouch = function(message) {
     var artist = message.points[0].x
         .toLowerCase()
         .replace(/ /g, '-');
