@@ -3,7 +3,7 @@
 var Plot = {
     id: 'plot',
     imgId: 'hover-image',
-    domain: 'https://plot.ly'
+    domain: 'https://cdn.plot.ly/plotly-1.28.3.min.js'
 };
 
 Plot.iframe = document.getElementById(Plot.id);
@@ -26,11 +26,11 @@ Plot.init = function init() {
 
             Plot.post({
                 'task': 'listen',
-                'events': ['click', 'touch']
+                'events': ['hover']
             });
         }
-        else if(message.type === 'touch') {
-            Plot.onTouch(message);
+        else if(message.type === 'hover') {
+            Plot.onHover(message);
         }
         else if(message.type === 'click') {
             Plot.onClick(message);
@@ -71,7 +71,7 @@ var artistToUrl = {
 
 var blankImg = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 
-Plot.onClick = function(message) {
+Plot.onHover = function(message) {
     console.log('test');
     var artist = message.points[0].x
         .toLowerCase()
