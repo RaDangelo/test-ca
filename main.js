@@ -30,7 +30,7 @@ Plot.init = function init() {
             });
         }
         else if(message.type === 'touch') {
-            Plot.onTouchStart(message);
+            Plot.onTouch(message);
         }
         else if(message.type === 'click') {
             Plot.onClick(message);
