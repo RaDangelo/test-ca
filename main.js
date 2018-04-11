@@ -23,10 +23,10 @@
                 console.log('Initial pong, frame is ready to receive');
                 clearInterval(pinger);
 
-                Plot.post({
-                    'task': 'listen',
-                    'events': ['hover']
-                });
+                // Plot.post({
+                //     'task': 'listen',
+                //     'events': ['hover']
+                // });
             }
             else if (message.type === 'hover') {
                 Plot.onHover(message);
