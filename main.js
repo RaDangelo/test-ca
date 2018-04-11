@@ -18,28 +18,20 @@
 
         function messageListener(e) {
             var message = e.data;
+            console.log(message.type);
+
 
             if (message.pong) {
                 console.log('Initial pong, frame is ready to receive');
                 clearInterval(pinger);
 
-                // Plot.post({
-                //     'task': 'listen',
-                //     'events': ['hover']
-                // });
+                Plot.post({
+                    'task': 'listen',
+                    'events': ['hover', 'touch', 'touchstart', 'click']
+                });
             }
             else if (message.type === 'hover') {
-                // Plot.onHover(message);
-                console.log('test', message);
-                var artist = message.points[0].x
-                    .toLowerCase()
-                    .replace(/ /g, '-');
-
-                var imgSrc = blankImg;
-
-                if (artistToUrl[artist] !== undefined) imgSrc = artistToUrl[artist];
-
-                Plot.hoverImg.src = imgSrc;
+                Plot.onHover(message);
             }
             else if (message.type === 'click') {
                 Plot.onClick(message);
