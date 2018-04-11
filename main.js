@@ -29,7 +29,17 @@
                 // });
             }
             else if (message.type === 'hover') {
-                Plot.onHover(message);
+                // Plot.onHover(message);
+                console.log('test', message);
+                var artist = message.points[0].x
+                    .toLowerCase()
+                    .replace(/ /g, '-');
+
+                var imgSrc = blankImg;
+
+                if (artistToUrl[artist] !== undefined) imgSrc = artistToUrl[artist];
+
+                Plot.hoverImg.src = imgSrc;
             }
             else if (message.type === 'click') {
                 Plot.onClick(message);
