@@ -38,7 +38,7 @@
 
         window.removeEventListener('message', messageListener);
         window.addEventListener('message', messageListener);
-        Plot.addEventListener('touchstart', function (ev) {
+        window.addEventListener('touchstart', function (ev) {
             ev.preventDefault();
             Plot.onHover(ev);
         });
