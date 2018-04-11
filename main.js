@@ -17,6 +17,7 @@
         }, 500);
 
         function messageListener(e) {
+            e.preventDefault();
             var message = e.data;
             console.log(message.type);
 
@@ -41,6 +42,7 @@
         window.removeEventListener('message', messageListener);
         window.addEventListener('message', messageListener);
         window.addEventListener('touchstart', function (ev) {
+            console.log('here');
             ev.preventDefault();
             Plot.onHover(ev);
         });
